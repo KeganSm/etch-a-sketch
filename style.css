@@ -1,0 +1,18 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 480px;
+    height: 480px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.cell {
+    color: grey;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
