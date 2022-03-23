@@ -16,3 +16,6 @@
     width: 30px;
     text-align: center;
 }
+.hovered {
+    background-color: black;
+}
