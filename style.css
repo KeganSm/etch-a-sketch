@@ -6,6 +6,17 @@
     height: 480px;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
+.controls {
+    display: flex;
+    flex-direction: row;
+    width: 480px;
+    padding-bottom: 8px;
+}
+.slidecontainer {
+    display: flex;
+    flex-direction: row;
+    
+}
 .row {
     display: flex;
     flex-direction: row;
@@ -17,3 +28,11 @@
 .hovered {
     background-color: black;
 }
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    background: #d3d3d3; /* Grey background */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }

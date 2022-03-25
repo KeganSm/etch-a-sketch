@@ -1,24 +1,12 @@
-const container = document.getElementById("container");
-const clearBtn = document.getElementById("clearBtn");
+const container = document.getElementById('container');
+const clearBtn = document.getElementById('clearBtn');
 let sideSquares;
 
-function createGrid (sideSquares) {
-    let cellEdge = parseFloat(480/sideSquares);
-    for (let w = 0; w < sideSquares; w++) { //creates a sideSquares x sideSquares grid of divs
-        row = document.createElement('div');
-        row.classList.add('row');
-        container.appendChild(row);
-        for (let i = 0; i < sideSquares; i++) {
-            cell = document.createElement('div');
-            cell.classList.add('cell');
-            cell.style.height = `${cellEdge}px`;
-            cell.style.width = `${cellEdge}px`;
-            row.appendChild(cell);
-        }
-    }
-    console.log(sideSquares);
-    console.log(cellEdge);
-}
+const sliderValue = document.getElementById('output'); //slider and slider output
+const slider = document.getElementById('slideRange');
+sideSquares = slider.value;
+sliderValue.innerHTML = `${sideSquares}x${sideSquares}`;
+
 window.onload = createGrid(16);
 
 container.addEventListener('mouseover', (e)=>{ //adds 'hovered' class to targeted cells
@@ -34,6 +22,30 @@ clearBtn.addEventListener('click', ()=>{ //clears grid with button click and pro
     newGrid();
 });
 
+slider.oninput = function () { //displaying slider value
+    sliderValue.innerHTML = `${this.value}x${this.value}`;
+}
+slider.onmouseup = function () { //creates new grid after slider has been released
+    sideSquares = this.value;
+    newGridSlide();
+}
+
+function createGrid (sideSquares) {
+    let cellEdge = parseFloat(480/sideSquares);
+    for (let w = 0; w < sideSquares; w++) { //creates a sideSquares x sideSquares grid of divs
+        row = document.createElement('div');
+        row.classList.add('row');
+        container.appendChild(row);
+        for (let i = 0; i < sideSquares; i++) {
+            cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.style.height = `${cellEdge}px`;
+            cell.style.width = `${cellEdge}px`;
+            row.appendChild(cell);
+        }
+    } // Display sideSquares x sideSquares for grid size
+}
+
 function newGrid () {
     container.innerHTML = '';
     sideSquares = prompt("How many sqaures per side?: ");
@@ -44,4 +56,7 @@ function newGrid () {
     }
     createGrid(sideSquares);
 }
-
+function newGridSlide () {
+    container.innerHTML = '';
+    createGrid(sideSquares);
+}
